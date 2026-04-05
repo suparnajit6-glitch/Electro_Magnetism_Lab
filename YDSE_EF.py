@@ -39,37 +39,28 @@ def f(x,y,z,t):
     return a**2
 
 
-y=np.linspace(-20,20,400)
-x=np.linspace(0,100,400)
+y=np.linspace(-20,20,250)
+x=np.linspace(0,100,250)
 t=np.linspace(0,2000,1000000)
 
 X,Y=np.meshgrid(x,y)
 
 Z=0
 
-fig,axis1=plt.subplots()
+fig, (axis1, axis) = plt.subplots(1, 2, figsize=(14, 6))
 axis1.set_xlim([min(x),max(x)])
 axis1.set_ylim([min(y),max(y)])
 
 
-plot=axis1.contourf(X,Y,f(X,Y,Z,0),levels=100,cmap="magma")
-plt.colorbar(plot, ax=axis1)
-
-def update(frame):
-    axis1.clear()
-
-    t_now = t[frame]
-    contour = axis1.contourf(X, Y, f(X,Y,Z,t_now), levels=100, cmap="magma")
-    
-
-
-    
-    
-
-
-animation1=FuncAnimation(fig=fig,func=update,frames=len(t),interval=10,repeat=True,blit=False)
-
-fig, axis = plt.subplots()
+field = f(X,Y,Z,0)
+plot1 = axis1.imshow(
+    field,
+    extent=[min(x), max(x), min(y), max(y)],
+    origin="lower",
+    aspect="auto",
+    cmap="magma"
+)
+plt.colorbar(plot1, ax=axis1)
 
 plot, = axis.plot(y, np.zeros_like(y), color="red")
 
@@ -79,17 +70,21 @@ avg = np.mean([f(40,y,0,ti) for ti in t[:50]], axis=0)
 
 def update_sc(frame):
     t_now = t[frame]
+    field = f(X,Y,Z,t_now)
+    plot1.set_data(field)
+
     intensity = f(40, y, 0, t_now)
     I=intensity/max(intensity)
     
     plot.set_data(y, I)
-    return plot,
+    return plot1, plot
 
-animation2= FuncAnimation(fig=fig,
+animation = FuncAnimation(fig=fig,
                           func=update_sc,
                           frames=len(t),
-                          interval=1e-6,
-                          repeat=False)
+                          interval=10,
+                          repeat=True,
+                          blit=False)
 
 
 
