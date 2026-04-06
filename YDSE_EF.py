@@ -10,11 +10,14 @@ x,y,z,t=sp.symbols("x y z t")
 
 #position of slits
 
-s1=(0,3,0)
-s2=(0,-3,0)
+s1=(0,5,0)
+s2=(0,-5,0)
 
 #Position of screen
-S=50
+
+S=float(input("Type the screen pos. wrt Origin (x=0):"))
+
+#
 
 v=3*(1e8)
 A=10
@@ -35,17 +38,12 @@ I_avg=((A**2)/(2*r1))+((A**2)/(2*r2))+((A**2)/((r1*r2)**0.5))*sp.cos(k*(r2-r1))
 v1=sp.lambdify((x,y,z,t),o1,"numpy")
 v2=sp.lambdify((x,y,z,t),o2,"numpy")
 
-I_avg=sp.lambdify((x,y,z),I_avg,"numpy")
-
-
-
-
-
 
 
 y=np.linspace(-20,20,250)
 x=np.linspace(0,100,250)
-t=np.linspace(0,500,1000000)
+
+t=np.linspace(0,1000,10000)
 
 X,Y=np.meshgrid(x,y)
 
@@ -58,9 +56,11 @@ r2_line = np.sqrt((S-s2[0])**2 + (y-s2[1])**2 + (0-s2[2])**2)
 
 
 def field_intensity(t_now):
-    wave1 = A*np.sin(omega_num*t_now-k_num*r1_grid)/np.sqrt(r1_grid)
-    wave2 = A*np.sin(omega_num*t_now-k_num*r2_grid)/np.sqrt(r2_grid)
-    return (wave1 + wave2)**2
+     wave1 = A*np.sin(omega_num*t_now-k_num*r1_grid)/np.sqrt(r1_grid)
+     wave2 = A*np.sin(omega_num*t_now-k_num*r2_grid)/np.sqrt(r2_grid)
+     I=np.where(x<=S,(wave1 + wave2)**2,0)
+
+     return I
 
 
 def line_intensity(t_now):
@@ -70,37 +70,69 @@ def line_intensity(t_now):
 
 
 
-fig, axes = plt.subplots(2, 2, figsize=(14, 6))
+fig, axes = plt.subplots(2, 2, figsize=(14, 8))
 
 axis1 = axes[0, 0]
 axis  = axes[0, 1]
 ax0   = axes[1, 0]
 ax_beta = axes[1, 1]
 
-axis1.set_xlim([min(x),max(x)])
+axis1.set_xlim([0,max(x)])
 axis1.set_ylim([min(y),max(y)])
+axis1.axvline(x=S,color="white",linestyle=":",label="Screen")
 
+axis1.legend()
 
 field = field_intensity(0)
+
 plot1 = axis1.imshow(
     field,
     extent=[min(x), max(x), min(y), max(y)],
     origin="lower",
     aspect="auto",
-    cmap="plasma"
+    cmap="magma"
 )
 plt.colorbar(plot1, ax=axis1)
 
-plot=axis.plot(y,I_avg(S,y,0)/max(I_avg(S,y,0)),linestyle='--')
+
+
+def tavg_int():
+    δI=np.zeros_like(y)
+    ΔI=np.zeros_like(Y)
+
+
+    for n in t:
+        I1=line_intensity(n)
+        I1_2D = I1_2D = np.tile(I1[np.newaxis, :], (X.shape[0], 1))  # shape = (len(x), len(y))
+
+        δI+=I1
+        ΔI+=I1_2D
+    
+    return δI/len(t) , ΔI/len(t)
+
+
+I1D, I2D = tavg_int()  # compute once
+
+
+
+plot=axis.plot(y,I1D/np.max(I1D),linestyle='--')
 plot, = axis.plot(y, np.zeros_like(y), color="red")
 
 axis.grid(True,color="gray")
-
 axis.set_xlim(min(y), max(y))
 axis.set_ylim(0, 4)   # intensity range (since max = (2A)^2 = 4)
 
-ax0.plot(y,I_avg(S,y,0)/max(I_avg(S,y,0)))
+
+
+ax0.plot(y,I1D/np.max(I1D))
 ax0.grid(True,color="gray")
+
+
+cont=ax_beta.contourf(X,Y,I2D/np.max(I2D),levels=50,cmap="magma")
+
+ax_beta.grid(True,color="gray",linestyle="--")
+fig.colorbar(cont,ax=ax_beta)
+
 
 
 def update_sc(frame):
@@ -117,12 +149,15 @@ def update_sc(frame):
 animation = FuncAnimation(fig=fig,
                           func=update_sc,
                           frames=len(t),
-                          interval=1,
+                          interval=33,
                           repeat=True,
                           blit=False)
 
 
 
-
 plt.grid(True,color="white")
 plt.show()
+
+
+
+
