@@ -1,62 +1,47 @@
-# ⚡ Electromagnetism Lab
+# Electromagnetism Lab
 
-> *A computational playground for exploring the beauty of fields, forces, and equations.*
+Computational exploration of Electromagnetism with a current focus on Young's Double Slit Experiment (YDSE).
 
----
+## 🎯 Goal
 
-## 🧠 About
+To explore electromagnetism beyond textbook formulas by building simulations, visualizing results, and developing intuitive understanding of physical concepts.
 
-This repository is my **personal computational physics lab**, dedicated to understanding **Electromagnetism (EM)** through code, simulation, and experimentation.
+## Main Work
 
-Rather than just solving problems on paper, I use programming to **visualize, simulate, and deeply explore** physical concepts.
+[YDSE_3D.ipynb](YDSE/simulations/YDSE_3D.ipynb)
 
----
+## Project Structure
 
-## 🛠️ Tech Stack
+- [YDSE/simulations/](YDSE/simulations/)
+- [YDSE/results/](YDSE/results/)
+- [YDSE/highlight_work/](YDSE/highlight_work/)
+- [YDSE/theory/](YDSE/theory/)
+- [Electric_Field/](Electric_Field/)
 
-- 🐍 Python (`.py`)
-- 📓 Jupyter Notebooks (`.ipynb`)
-- 🟣 Julia (`.jl`)
+## Conceptual Insight
 
----
+[ydse_intuition.md](YDSE/highlight_work/ydse_intuition.md)
 
-## 🔬 What You'll Find
+## Results
 
-- ⚡ Electric & magnetic field simulations  
-- 📊 Numerical solutions to EM problems  
-- 🌌 Vector field & potential visualizations  
-- 🧪 Small computational experiments  
-- 📚 Concept-driven explorations  
+### Basic Pattern
+![Basic Pattern](YDSE/results/ydse_basic_pattern.png)
 
----
+### Intensity at z = 0
+![Intensity at z = 0](YDSE/results/intensity_z0.png)
 
-## 🎯 Philosophy
+### Intensity Snapshot
+![Intensity Snapshot](YDSE/results/intensity_snapshot.png)
 
-> *"If I can simulate it, I can understand it."*
+### Time-Averaged Intensity
+![Time-Averaged Intensity](YDSE/results/time_avg_intensity.png)
 
-This is not a polished project — it’s a **learning environment** where:
-- ideas are tested  
-- intuition is built  
-- mistakes are embraced  
+## Simulations
 
----
+- [ydse_3d_simulation.py](YDSE/simulations/ydse_3d_simulation.py)
+- [ydse_intensity_contour.py](YDSE/simulations/ydse_intensity_contour.py)
 
-## 🚀 Future Goals
+## Theory
 
-- Field line animation engine  
-- Gauss's law visual solver  
-- Maxwell equation simulations  
-- High-quality visualizations for teaching  
-
----
-
-## 🤝 Contributions
-
-This is a personal lab, but ideas, discussions, and suggestions are always welcome!
-
----
-
-## ⭐ Final Note
-
-Exploring physics not just with equations,  
-but with **code, visuals, and curiosity**.
+- [YDSE/theory/](YDSE/theory/)
+- `YDSE/theory/ydse_formal.md` does not exist yet.
