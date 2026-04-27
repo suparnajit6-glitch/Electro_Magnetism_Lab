@@ -1,62 +1,21 @@
-# ⚡ Electromagnetism Lab
+# Electro Magnetism Lab (EM_lab)
 
-> *A computational playground for exploring the beauty of fields, forces, and equations.*
+This repository contains my independent exploration of Electromagnetism as a Class 12 student.
 
----
+## What this repo includes
+- Derivations of key EM concepts
+- Problem-solving approaches
+- Conceptual explorations beyond textbook level
+- Notes and original insights
 
-## 🧠 About
+## Current Topics Covered
+- Electric Fields and Potential
+- Gauss's Law (intuitive + mathematical understanding)
+- Capacitors
+- Magnetic Fields (ongoing)
 
-This repository is my **personal computational physics lab**, dedicated to understanding **Electromagnetism (EM)** through code, simulation, and experimentation.
+## Goal
+To build a deep, concept-driven understanding of electromagnetism and prepare for advanced physics studies.
 
-Rather than just solving problems on paper, I use programming to **visualize, simulate, and deeply explore** physical concepts.
-
----
-
-## 🛠️ Tech Stack
-
-- 🐍 Python (`.py`)
-- 📓 Jupyter Notebooks (`.ipynb`)
-- 🟣 Julia (`.jl`)
-
----
-
-## 🔬 What You'll Find
-
-- ⚡ Electric & magnetic field simulations  
-- 📊 Numerical solutions to EM problems  
-- 🌌 Vector field & potential visualizations  
-- 🧪 Small computational experiments  
-- 📚 Concept-driven explorations  
-
----
-
-## 🎯 Philosophy
-
-> *"If I can simulate it, I can understand it."*
-
-This is not a polished project — it’s a **learning environment** where:
-- ideas are tested  
-- intuition is built  
-- mistakes are embraced  
-
----
-
-## 🚀 Future Goals
-
-- Field line animation engine  
-- Gauss's law visual solver  
-- Maxwell equation simulations  
-- High-quality visualizations for teaching  
-
----
-
-## 🤝 Contributions
-
-This is a personal lab, but ideas, discussions, and suggestions are always welcome!
-
----
-
-## ⭐ Final Note
-
-Exploring physics not just with equations,  
-but with **code, visuals, and curiosity**.
+## About Me
+I am a physics enthusiast from India, aiming to pursue physics at a higher level and contribute meaningfully to the field.
