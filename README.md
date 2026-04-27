@@ -2,6 +2,8 @@
 
 Computational exploration of Electromagnetism with a current focus on Young's Double Slit Experiment (YDSE).
 
+This repository documents an independent exploration of electromagnetism through simulation, visualization, and concept-building.
+
 ## 🎯 Goal
 
 To explore electromagnetism beyond textbook formulas by building simulations, visualizing results, and developing intuitive understanding of physical concepts.
