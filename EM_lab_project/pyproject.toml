@@ -1,5 +1,5 @@
 [project]
-name = "electric-field"
+name = "em-lab-project"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -7,10 +7,4 @@ requires-python = ">=3.14"
 dependencies = [
     "matplotlib>=3.10.9",
     "numpy>=2.4.4",
-    "sympy>=1.14.0",
-]
-
-[dependency-groups]
-dev = [
-    "ipykernel>=7.2.0",
 ]
