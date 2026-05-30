@@ -1,0 +1,31 @@
+Date of experiment: 31/05/2026
+Done (arranged,scripted,documented,sorted) by: Suparnajit Ghosh 
+No. of results got: 10
+Results location: "Github\Electro_Magnetism_Lab\em_lab\YDSE\results\Real_parameters_red_laser"
+
+# All quantities are expressed in SI units unless otherwise specified.
+# The source wavelength corresponds approximately to a red laser (λ = 650 nm).
+
+# Spatial grid
+x = np.linspace(0, S, 300)
+y = np.linspace(-0.05, 0.05, 300)
+z = np.linspace(-1, 1, 300)
+
+X, Y = np.meshgrid(x, y)
+
+Γ, ζ = np.meshgrid(y, z)
+
+# Physical constants and source parameters
+
+λ = 6.5e-7      # Wavelength (m)
+c = 3e8         # Speed of light in vacuum (m/s)
+A = 1           # Source amplitude
+
+k = 2*np.pi/λ   # Wave number (rad/m)
+ω = c*k         # Angular frequency (rad/s)
+
+d = 1e-4        # Separation between the two point sources (m)
+
+# Source coordinates
+s1 = (0, d/2, 0)
+s2 = (0, -d/2, 0)
